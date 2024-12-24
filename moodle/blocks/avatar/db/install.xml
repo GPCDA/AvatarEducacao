@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="blocks/avatar/db" VERSION="20141208" COMMENT="XMLDB file for Moodle blocks/avatar"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="block_avatar" COMMENT="Default table for block_avatar">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="gender" TYPE="char" LENGTH="6" NOTNULL="true" DEFAULT="male" SEQUENCE="false" COMMENT="avatar gender (female or male)"/>
+        <FIELD NAME="avatarid" TYPE="int" LENGTH="2" NOTNULL="true" DEFAULT="1" SEQUENCE="false"/>
+        <FIELD NAME="new_contents_sent" TYPE="char" LENGTH="5" NOTNULL="true" DEFAULT="true" SEQUENCE="false" COMMENT="true or false -- notification"/>
+        <FIELD NAME="new_activities_sent" TYPE="char" LENGTH="5" NOTNULL="true" DEFAULT="true" SEQUENCE="false" COMMENT="true or false -- notification"/>
+        <FIELD NAME="pending_activities" TYPE="char" LENGTH="5" NOTNULL="true" DEFAULT="true" SEQUENCE="false" COMMENT="true or false -- notification"/>
+        <FIELD NAME="message" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="message that the avatar will synthesize"/>
+        <FIELD NAME="created_userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="modfied_userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="created" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="last_change" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" COMMENT="timestamp"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="courseid" TYPE="foreign" FIELDS="courseid" REFTABLE="course" REFFIELDS="id"/>
+        <KEY NAME="created_userid" TYPE="foreign" FIELDS="created_userid" REFTABLE="user" REFFIELDS="id"/>
+        <KEY NAME="modfied_userid" TYPE="foreign" FIELDS="modfied_userid" REFTABLE="user" REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="block_avatar_cache" COMMENT="Cache Table">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="type" TYPE="char" LENGTH="3" NOTNULL="true" DEFAULT="msg" SEQUENCE="false"/>
+        <FIELD NAME="phrase" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="speaker" TYPE="char" LENGTH="3" NOTNULL="true" DEFAULT="Cid" SEQUENCE="false"/>
+        <FIELD NAME="created" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="last_change" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="id" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="userid" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id"/>
+        <KEY NAME="courseid" TYPE="foreign" FIELDS="courseid" REFTABLE="course" REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="block_avatar_mobile" COMMENT="Mobile Table">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="token" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="expires" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="last_sync" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="userid" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>

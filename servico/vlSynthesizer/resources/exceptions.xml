@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WordExceptions>
+  <exception>
+    <word>ltda</word>
+    <representation>Limitada</representation>
+  </exception>
+
+   <exception>
+    <word>tjpe</word>
+    <representation>tê jóta pê é</representation>
+  </exception>
+
+  <exception>
+    <word>site</word>
+    <representation>çáiti</representation>
+  </exception>
+
+<exception>
+    <word>npu</word>
+    <representation>eni pê ú</representation>
+  </exception>
+
+<exception>
+    <word>tv</word>
+    <representation>tê vê</representation>
+  </exception>
+
+  <exception>
+    <word>stf</word>
+    <representation>essi tê efi</representation>
+  </exception>
+
+<exception>
+    <word>jvdfm</word>
+    <representation>jota vê dê efi emi</representation>
+</exception>
+
+</WordExceptions>
+
